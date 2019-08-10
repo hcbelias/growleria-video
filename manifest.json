@@ -1,0 +1,18 @@
+{
+  "short_name": "Growleria",
+  "name": "Growleria - Chopp no Litro",
+  "icons": [
+  {
+      "src": "/assets/images/growleria-white.png",
+      "type": "image/png",
+      "sizes": "175x175"
+    }
+  ],
+  "start_url": "/login?home-screen=true",
+  "scope": "/",
+  "background_color": "#3367D6",
+  "display": "fullscreen",
+  "scope": "/maps/",
+  "theme_color": "#3367D6",
+  "gcm_sender_id": "103953800507"
+}
