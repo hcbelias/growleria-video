@@ -1,31 +1,29 @@
 {
-  "name": "growleria-video",
-  "version": "1.0.0",
-  "description": "",
-  "main": "src/index.js",
+  "name": "your-project-name",
+  "version": "0.0.0",
+  "private": true,
   "scripts": {
-    "start": "node src/index.js"
+    "start": "npm run prod",
+    "server": "babel-node ./src/bin/www",
+    "server:prod": "node ./dist/bin/www",
+    "dev": "set NODE_ENV=development && npm run server",
+    "clean": "rimraf dist",
+    "build": "npm run clean && babel ./src --out-dir dist",
+    "prod": "set NODE_ENV=production && npm run build && npm run server:prod",
+    "watch": "nodemon"
   },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/hcbelias/growleria-video.git"
-  },
-  "author": "",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/hcbelias/growleria-video/issues"
-  },
-  "engines": {
-    "node": "^12.8.0",
-    "npm": "^6.10.2"
-  },
-  "homepage": "https://github.com/hcbelias/growleria-video#readme",
   "dependencies": {
-    "body-parser": "^1.19.0",
-    "express": "^4.17.1",
-    "http": "0.0.0",
-    "mongoose": "^5.6.9",
-    "morgan": "^1.9.1",
-    "path": "^0.12.7"
+    "cookie-parser": "~1.4.3",
+    "debug": "~2.6.9",
+    "express": "~4.16.0",
+    "morgan": "~1.9.0"
+  },
+  "devDependencies": {
+    "@babel/cli": "^7.2.3",
+    "@babel/core": "^7.2.2",
+    "@babel/node": "^7.2.2",
+    "@babel/preset-env": "^7.3.1",
+    "nodemon": "^1.18.9",
+    "rimraf": "^2.7.1"
   }
 }

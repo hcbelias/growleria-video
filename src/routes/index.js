@@ -1,17 +1,9 @@
-/**
- * Main application routes
- */
+import express from 'express';
+var router = express.Router();
 
-'use strict';
+/* GET home page. */
+router.get('/', function (req, res, next) {
+  res.render('index', { title: 'Express' });
+});
 
-import path from 'path';
-
-export default function (app) {
-  app.use('/api/users', require('./api/user'));
-  app.use('/api/videos', require('./api/video'));
-  app.use('/auth', require('./auth').default);
-  app.route('/*')
-    .get((req, res) => {
-      return res.status(404).end();
-    });
-}
+export default router;
