@@ -3,6 +3,7 @@
 import crypto from "crypto";
 mongoose.Promise = require("bluebird");
 import mongoose, { Schema } from "mongoose";
+import BusinessSchema from "./../store/business.schema";
 var ValidationError = mongoose.Error.ValidationError;
 var ValidatorError = mongoose.Error.ValidatorError;
 
@@ -26,55 +27,19 @@ var UserSchema = new Schema({
     type: String,
     default: "user"
   },
-  password: {
-    type: String,
-    required() {
-      if (authTypes.indexOf(this.provider) === -1) {
-        return true;
-      } else {
-        return false;
-      }
-    }
-  },
   provider: String,
   nickname: { default: "", type: String },
-  salt: String,
-  facebook: {},
-  google: {},
-  github: {},
-  cpf: { type: String, default: "" },
   timezone: { type: String, default: "America/Sao_Paulo" },
-  stores: {
-    type: [
-      {
-        type: mongoose.Schema.ObjectId,
-        ref: "Store"
-      }
-    ],
-    default: []
-  }
 });
 
-/**
- * Virtuals
- */
-
-// Public profile information
 UserSchema.virtual("profile").get(function () {
   return {
-    _id: this._id,
+    id: this._id,
     name: this.name,
     nickname: this.nickname,
     role: this.role,
     active: this.active,
     email: this.email,
-    workingHours: this.workingHours,
-    cashierValidation: this.cashierValidation,
-    workingDays: this.workingDays,
-    repeatedWorkingDays: this.repeatedWorkingDays,
-    hourlyRate: this.hourlyRate,
-    cpf: this.cpf,
-    stores: this.stores,
     timezone: this.timezone
   };
 });

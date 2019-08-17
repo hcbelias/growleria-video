@@ -3,8 +3,8 @@ import config from '../config/environment';
 import jwt from 'jsonwebtoken';
 import expressJwt from 'express-jwt';
 import compose from 'composable-middleware';
-import User from '../user/user.model';
-import { google } from 'googleapis';
+import User from '../api/user/user.model';
+import {google} from 'googleapis';
 const GOOGLE_CALENDAR_VERSION = 'v3';
 
 

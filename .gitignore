@@ -1,14 +1,1 @@
 node_modules
-public
-.tmp
-.sass-cache
-.idea
-client/bower_components
-client/app.html
-dist
-/server/config/local.env.js
-npm-debug.log
-coverage
-/backup
-/client/components/token-print-modal/*.bak
-/backup-db
