@@ -8,7 +8,7 @@
     "server:prod": "node ./dist/bin/www",
     "dev": "set NODE_ENV=development && npm run server",
     "clean": "rimraf dist",
-    "build": "npm run clean && babel ./src --out-dir dist",
+    "build": "babel ./src --out-dir dist",
     "prod": "set NODE_ENV=production && npm run build && npm run server:prod",
     "watch": "nodemon"
   },
