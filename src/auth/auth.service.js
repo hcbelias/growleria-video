@@ -4,8 +4,6 @@ import jwt from 'jsonwebtoken';
 import expressJwt from 'express-jwt';
 import compose from 'composable-middleware';
 import User from '../api/user/user.model';
-import {google} from 'googleapis';
-const GOOGLE_CALENDAR_VERSION = 'v3';
 
 
 var validateJwt = expressJwt({
@@ -41,29 +39,6 @@ export function isAuthenticated() {
           return next();
         })
         .catch(err => next(err));
-    });
-}
-
-export function isGoogleCalendarAuthenticated() {
-  return compose()
-    .use(function (req, res, next) {
-
-      let jwtClient = new google.auth.JWT(
-        config.service_account.client_email,
-        config.service_account,
-        config.service_account.private_key,
-        ['https://www.googleapis.com/auth/calendar']);
-
-      jwtClient.authorize((err, tokens) => {
-        if (err) {
-          console.log(err);
-          return next(err);
-        } else {
-          req.googleClient = jwtClient;
-          req.googleCalendar = google.calendar({ version: GOOGLE_CALENDAR_VERSION, auth: jwtClient });
-          return next();
-        }
-      });
     });
 }
 

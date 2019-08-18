@@ -1,7 +1,7 @@
 'use strict';
 
 var express = require('express');
-var controller = require('./client.controller');
+var controller = require('./video.controller');
 import * as auth from '../../auth/auth.service';
 
 var router = express.Router();

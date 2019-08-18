@@ -20,10 +20,7 @@ var config = {
       || process.env.OPENSHIFT_MONGODB_DB_URL + process.env.OPENSHIFT_APP_NAME
       || 'mongodb://localhost:27017/growleria',
     options: {
-      useMongoClient: true,
-      db: {
-        safe: true
-      }
+      useNewUrlParser: true
     }
   }
 };
