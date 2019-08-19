@@ -1,6 +1,10 @@
 "use strict";
 
 import mongoose from "mongoose";
+let fs = require('fs')
+let path = require('path');
+let express = require('express');
+
 import Video from "./video.model";
 
 function respondWithResult(res, statusCode) {
@@ -73,6 +77,7 @@ function streamFile(file, res, next, req) {
       return next(err);
     }
     let range = req.headers.range;
+
     if (!range) {
       let err = new Error('Wrong range');
       err.status = 416;
@@ -85,15 +90,10 @@ function streamFile(file, res, next, req) {
 }
 
 
-export function show(req, res) {
-  let file = `../assets/videos/${req.param.name}.mp4`;
+export function show(req, res, next) {
+  let file = `./toystory.mp4`;
 
-  streamFile(file, res, next, req);
-
-  return Video.findById(req.params.id).exec()
-    .then(handleEntityNotFound(res))
-    .then(respondWithResult(res))
-    .catch(handleError(res));
+  return streamFile(file, res, next, req, next);
 }
 
 export function create(req, res) {

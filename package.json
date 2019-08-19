@@ -5,12 +5,14 @@
   "scripts": {
     "start": "npm run prod",
     "server": "babel-node ./src/bin/www",
+    "debug": "babel-node debug ./src/bin/www",
     "server:prod": "node ./dist/bin/www",
     "dev": "set NODE_ENV=development && npm run server",
+    "debug-server": "set NODE_ENV=development && set DEBUG=myapp:* && npm run debug",
     "clean": "rimraf dist",
     "build": "babel ./src --out-dir dist",
     "prod": "set NODE_ENV=production && npm run build && npm run server:prod",
-    "watch": "nodemon"
+    "watch": "nodemon --exec npm run dev"
   },
   "dependencies": {
     "composable-middleware": "^0.3.0",
@@ -18,16 +20,18 @@
     "debug": "~2.6.9",
     "express": "~4.16.0",
     "express-jwt": "^5.3.1",
+    "fs": "0.0.1-security",
     "jsonwebtoken": "^8.5.1",
     "mongoose": "^5.6.9",
-    "morgan": "~1.9.0"
+    "morgan": "~1.9.0",
+    "path": "^0.12.7"
   },
   "devDependencies": {
     "@babel/cli": "^7.2.3",
     "@babel/core": "^7.2.2",
     "@babel/node": "^7.2.2",
     "@babel/preset-env": "^7.3.1",
-    "nodemon": "^1.18.9",
+    "nodemon": "^1.19.1",
     "rimraf": "^2.7.1"
   }
 }
