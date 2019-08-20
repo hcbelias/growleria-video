@@ -11,7 +11,6 @@ export default function (app) {
     res.render('index', { title: 'Express' });
   });
   app.route('/*').get((req, res) => {
-    debugger;
     return res.status(404).end();
   });
 }

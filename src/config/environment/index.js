@@ -22,7 +22,14 @@ var config = {
     options: {
       useNewUrlParser: true
     }
+  },
+
+  aws: {
+    accessKey: process.env.AWS_ACCESS_KEY,
+    secretAccessKey: process.env.AWS_SECRET_ACCESS_KEY
   }
+
 };
+console.log(JSON.stringify(config))
 
 module.exports = config;
