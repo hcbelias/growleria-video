@@ -117,6 +117,14 @@ async function streamS3File(userId, index, range, next, res) {
       return res.status(500).json({ error: 'Streaming' });
     });
 
+
+    //stream.on('open', function () {
+    // stream.pipe(res);
+    //});
+
+    stream.on('end', () => {
+      console.log('Served');
+    });
     //Add the content type to the response (it's not propagated from the S3 SDK)
     const headParams = {
       'Content-Type': 'video/mp4',
@@ -126,14 +134,6 @@ async function streamS3File(userId, index, range, next, res) {
 
     };
     res.writeHead(206, headParams);
-    //stream.on('open', function () {
-    // stream.pipe(res);
-    //});
-
-    stream.on('end', () => {
-      console.log('Served');
-    });
-    //Pipe the s3 object to the response
     stream.pipe(res);
   });
   //return await s3.getObject(params).createReadStream();
