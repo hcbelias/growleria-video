@@ -114,7 +114,7 @@ async function streamS3File(userId, index, range, next, res) {
     // forward errors
     stream.on('error', function error(err) {
       //continue to the next middlewares
-      return res.status(500).json({ error: 'Streaming' });
+      return next(err);
     });
 
 
