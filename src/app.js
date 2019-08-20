@@ -5,6 +5,12 @@ import logger from 'morgan';
 import mongoose from 'mongoose';
 import config from './config/environment';
 
+import session from "express-session";
+import connectMongo from "connect-mongo";
+
+
+var MongoStore = connectMongo(session);
+
 
 
 
@@ -22,6 +28,18 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, '../public')));
+
+app.use(
+    session({
+        secret: config.secrets.session,
+        saveUninitialized: true,
+        resave: false,
+        store: new MongoStore({
+            mongooseConnection: mongoose.connection,
+            db: "growleria"
+        })
+    })
+);
 
 require('./routes').default(app);
 

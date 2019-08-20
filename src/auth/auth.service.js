@@ -32,7 +32,7 @@ export function isAuthenticated() {
     .use(function (req, res, next) {
       return User.findById(req.user._id).exec()
         .then(user => {
-          if (!user) {
+          if (!user || !user.active) {
             return res.status(401).end();
           }
           req.user = user;
