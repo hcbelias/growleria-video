@@ -106,7 +106,7 @@ async function streamS3File(userId, index, range, next, res) {
     let start = parseInt(positions[0], 10);
     let fileSize = data.ContentLength;
     let chunk = start + 5000000;
-    let end = positions[1] ? parseInt(positions[1], 10) : (chunk > fileSize ? fileSize : chunk);
+    let end = positions[1] ? parseInt(positions[1], 10) : (chunk > fileSize ? fileSize - 1 : chunk);
 
     Object.assign(params, { Range: `bytes=${start}-${end}` });
     var stream = s3.getObject(params).createReadStream();
