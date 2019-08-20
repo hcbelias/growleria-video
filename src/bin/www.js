@@ -3,6 +3,8 @@
 /**
  * Module dependencies.
  */
+import "core-js/stable";
+import "regenerator-runtime/runtime";
 
 import app from '../app';
 import debugLib from 'debug';
