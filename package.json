@@ -39,5 +39,9 @@
     "nodemon": "^1.19.1",
     "regenerator-runtime": "^0.13.3",
     "rimraf": "^2.7.1"
+  },
+  "engines": {
+    "node": "^12.8.0",
+    "npm": "^6.10.3"
   }
 }
