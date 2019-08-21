@@ -105,7 +105,8 @@ async function streamS3File(userId, index, range, next, res) {
     let positions = range.replace(/bytes=/, '').split('-');
     let start = parseInt(positions[0], 10);
     let fileSize = data.ContentLength;
-    let chunk = start + 1000000;
+    const space = start === 0 ? 5000000 : 3000000;
+    let chunk = start + space;
     let end = positions[1] ? parseInt(positions[1], 10) : (chunk > fileSize ? fileSize - 1 : chunk);
 
     Object.assign(params, { Range: `bytes=${start}-${end}` });
