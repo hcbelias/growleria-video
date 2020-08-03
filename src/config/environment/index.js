@@ -12,7 +12,7 @@ var config = {
   port: process.env.PORT || 9000,
   ip: process.env.IP || '0.0.0.0',
   secrets: {
-    session: 'growleria-secret'
+    session: process.env.SESSION_SECRET
   },
   mongo: {
     uri: process.env.MONGODB_URI
