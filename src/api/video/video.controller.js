@@ -94,7 +94,7 @@ async function streamS3File(userId, index, range, next, res) {
   });
   var s3 = new AWS.S3({ apiVersion: '2006-03-01' });
   const name = index <= 0 || index > fileList.length ? fileList[0] : fileList[index - 1];
-  var params = { Bucket: 'growleria-videos', Key: `${name}` };
+  var params = { Bucket: 'videos.growleria', Key: `${name}` };
   let metadata = await s3.headObject(params, function (err, data) {
     if (err) {
       // an error occurred

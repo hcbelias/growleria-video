@@ -40,8 +40,7 @@
     "regenerator-runtime": "^0.13.3",
     "rimraf": "^2.7.1"
   },
-  "engines": {
-    "node": "^12.8.0",
-    "npm": "^6.10.3"
+  "volta": {
+    "node": "14.15.0"
   }
 }
